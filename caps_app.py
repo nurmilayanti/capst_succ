@@ -38,7 +38,7 @@ if not df.empty:
     fig = go.Figure()
 
     # Scatter plot based on product sales (single plot)
-    st.write('hg')
+    st.write('Location of Product Sales along Latitude and Longitude Coordinates')
     fig.add_trace(go.Scattergeo(
         lon=df['longitude'],
         lat=df['latitude'],
