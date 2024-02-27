@@ -10,7 +10,7 @@ import altair as alt
 
 
 st.set_page_config(layout='wide')
-st.header('Product Analyst for Top 3 E-commerce in Indonesia')
+st.header('Skincare Product Analyst for Top 3 E-commerce in Indonesia')
 
 df = pd.read_excel('top_3_ecommerce_edited2.1.xlsx')
 
