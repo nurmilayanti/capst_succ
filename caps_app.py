@@ -117,7 +117,7 @@ with col1:
         x='prd_sales_1:Q',
         y='merk:N',
         color=alt.Color('e_commerce:N', scale=alt.Scale(scheme='viridis')),
-        tooltip=['Product sales', 'merk', 'e_commerce']
+        tooltip=['prd_sales_1', 'merk', 'e_commerce']
     ).properties(
         width=plot_width,
         height=plot_height,
