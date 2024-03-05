@@ -114,10 +114,10 @@ col1, col2 = st.columns([2, 1])
 # Inside col1, display the chart
 with col1:
     chart = alt.Chart(top_products_per_ecommerce).mark_bar().encode(
-        x='Product sales:Q',
+        x='prd_sales_1:Q',
         y='merk:N',
         color=alt.Color('e_commerce:N', scale=alt.Scale(scheme='viridis')),
-        tooltip=['prd_sales_1', 'merk', 'e_commerce']
+        tooltip=['Product sales', 'merk', 'e_commerce']
     ).properties(
         width=plot_width,
         height=plot_height,
