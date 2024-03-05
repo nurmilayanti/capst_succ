@@ -139,4 +139,5 @@ with col2:
 
 
 
-st.write('Created by Nurmilayanti')
+st.write("<div style='text-align:center;'>nurmilayanti</div>", unsafe_allow_html=True)
+
