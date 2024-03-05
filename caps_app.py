@@ -136,3 +136,7 @@ with col2:
         """.format(top_brands_df.to_html()), 
         unsafe_allow_html=True
     )
+
+
+
+st.write('Created by Nurmilayanti')
