@@ -10,22 +10,71 @@ import altair as alt
 
 
 st.set_page_config(layout='wide')
-st.header('Skincare Product Analyst for Top 3 E-commerce in Indonesia')
+st.set_page_config(layout='wide')
+st.write("<div style=''><h3>Revealing Skincare Insights: Analysis of Top 3 E-commerce Trends in Indonesia</h3></div>", unsafe_allow_html=True)
 
 df = pd.read_excel('top_3_ecommerce_edited2.1.xlsx')
 
-produk_terjual_per_ecommerce = df.groupby('e_commerce')['prd_sales_1'].sum()
-produk_per_ecommerce = df['e_commerce'].value_counts()
+produk_terjual_per_ecommerce = df.groupby('e_commerce')['prd_sales_1'].sum().reset_index(name='jumlah_produk_terjual')
 
-col1, col2 = st.columns(2)
+# Menghitung total produk per e-commerce
+produk_per_ecommerce = df['e_commerce'].value_counts().reset_index()
+produk_per_ecommerce.columns = ['e_commerce', 'jumlah_produk']
 
+# Menggabungkan data
+merged_data = pd.merge(produk_terjual_per_ecommerce, produk_per_ecommerce, on='e_commerce')
+
+# Melipatgandakan kolom menggunakan melt()
+melted_data = pd.melt(merged_data, id_vars=['e_commerce'], value_vars=['jumlah_produk_terjual', 'jumlah_produk'],
+                      var_name='variable', value_name='value')
+
+
+
+
+chart1 = alt.Chart(melted_data).mark_bar().encode(
+        x=alt.X('e_commerce:N', title='E-Commerce'),
+        y=alt.Y('value:Q', title='Value', scale=alt.Scale(type='log')),  # Menggunakan skala logaritmik
+        color=alt.Color('variable:N', 
+                        title='Variable', 
+                        scale=alt.Scale(range=['#083D53', '#0A6D99'])),
+        tooltip=['value', 'e_commerce', 'variable']
+    ).properties(
+        width=500,
+        height=400,
+        title='Number of Products and Sold Products per E-commerce'
+    ).interactive()
+
+
+
+# Membuat visualisasi dengan Altair
+
+average_discount = df.groupby('e_commerce')['prd_discount_1_dec'].mean().reset_index()
+# Find e-commerce with the highest discount
+ecommerce_with_highest_discount = average_discount.loc[average_discount['prd_discount_1_dec'].idxmax()]
+# Streamlit App
+
+chart2 = alt.Chart(average_discount).mark_bar().encode(
+        x=alt.X('e_commerce:N', title='E-Commerce'),
+        y=alt.Y('prd_discount_1_dec:Q', title='Average Discount'),
+        color=alt.Color('e_commerce:N', title='E-Commerce', scale=alt.Scale(range=['#15A89B', '#156AA8', '#543AB1'])),
+        tooltip=['e_commerce', 'prd_discount_1_dec']
+    ).properties(
+        width=600,
+        height=400,
+        title='Average Discounts by E-commerce'
+    ).interactive()
+
+
+
+col1, col2 = st.columns([2, 1]) 
 with col1:
-    st.write('Jumlah Produk per per E-commerce') 
-    st.bar_chart(produk_per_ecommerce,  use_container_width=True, color='#535C91')
-
+    st.altair_chart(chart1, use_container_width=True)
 with col2:
-    st.write('Jumlah Produk Terjual per E-commerce') 
-    st.bar_chart(produk_terjual_per_ecommerce, color='#535C91')
+    st.altair_chart(chart2, use_container_width=True)
+
+
+
+
 
 
 ##
