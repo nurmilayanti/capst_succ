@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import seaborn as sns
 import altair as alt
+import numpy as np
 
 
 st.set_page_config(layout='wide')
@@ -27,8 +28,6 @@ merged_data = pd.merge(produk_terjual_per_ecommerce, produk_per_ecommerce, on='e
 # Melipatgandakan kolom menggunakan melt()
 melted_data = pd.melt(merged_data, id_vars=['e_commerce'], value_vars=['jumlah_produk_terjual', 'jumlah_produk'],
                       var_name='variable', value_name='value')
-
-
 
 
 chart1 = alt.Chart(melted_data).mark_bar().encode(
