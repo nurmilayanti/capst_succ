@@ -79,7 +79,11 @@ with col2:
 
 
 
-
+st.markdown("""
+    <div style='margin-bottom:40px; text-align: justify;'>
+        <h11>Pada diagram batang sisi kiri merepresentasikan banyaknya produk dengan keyword skincare di 3 e-commerce (Tokopedia, Shopee dan Lazada) serta jumlah produk yang terjual di masing-masing e-commerce tersebut. Sedangkan pada diagram sisi kanan mencoba untuk menggali terkait salah satu faktor yang memepengaruhi besarnya jumlah produk yang terjual.</h11>
+    </div>
+""", unsafe_allow_html=True)
 
 
 
