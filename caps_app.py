@@ -291,7 +291,6 @@ with col2:
 
 
 
-st.write("<div style='text-align:center; margin-top:70px;'>Created by Nurmilayanti</div>", unsafe_allow_html=True)
-
+st.write("<div style='text-align:center; margin-top:70px;'>Created by Nurmilayanti <a href>https://www.linkedin.com/in/nurmilayanti-ii/</a href></div>", unsafe_allow_html=True)
 
 
