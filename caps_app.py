@@ -37,7 +37,7 @@ chart1 = alt.Chart(melted_data).mark_bar().encode(
         y=alt.Y('value:Q', title='Value', scale=alt.Scale(type='log')),  # Menggunakan skala logaritmik
         color=alt.Color('variable:N', 
                         title='Variable', 
-                        scale=alt.Scale(range=['#083D53', '#15A89B'])),
+                        scale=alt.Scale(range=['#156AA8', '#15A89B'])),
         tooltip=['value', 'e_commerce', 'variable']
     ).properties(
         width=500,
