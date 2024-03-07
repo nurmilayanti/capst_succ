@@ -96,6 +96,45 @@ st.markdown("""
 
 
 # Ensure there's data to plot
+if not df.empty:
+    # Menggabungkan prd_sales_1 untuk 'Kota Makassar' dan 'Makassar'
+    df = df.groupby('shop_loc', as_index=False).agg({'prd_sales_1': 'sum'})
+
+    # Membuat multiselect dengan semua lokasi sebagai opsi
+    all_locations = df['shop_loc'].unique()
+    selected_locations = st.multiselect('Select Shop Locations:', all_locations)
+
+    if selected_locations:  # Cek apakah ada lokasi yang dipilih
+        # Filter DataFrame berdasarkan lokasi yang dipilih
+        filtered_df = df[df['shop_loc'].isin(selected_locations)]
+
+        if not filtered_df.empty:
+            fig = go.Figure()
+
+            # Membuat diagram batang berdasarkan penjualan produk untuk lokasi toko yang dipilih
+            st.write(f'Product Sales for {selected_locations}')
+            fig.add_trace(go.Bar(
+                x=filtered_df['shop_loc'],
+                y=filtered_df['prd_sales_1'],
+                marker_color='blue'
+            ))
+
+            fig.update_layout(
+                xaxis=dict(title='Shop Location'),
+                yaxis=dict(title='Product Sales'),
+                width=600,
+                height=600
+            )
+
+            st.plotly_chart(fig)
+        else:
+            st.write("No data available for the selected shop locations.")
+    else:
+        st.write("Please select at least one shop location.")
+else:
+    st.write("No data available to plot.")
+
+##
 
 if not df.empty:
     fig = go.Figure()
