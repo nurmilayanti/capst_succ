@@ -13,7 +13,7 @@ import altair as alt
 
 st.set_page_config(layout='wide')
 st.write("<div style=''><h3>Revealing Skincare Insights: Analysis of Top 3 E-commerce Trends in Indonesia</h3></div>", unsafe_allow_html=True)
-st.write("<div style=''><h5>Berdasarkan data Kementerian Perindustrian, industri kosmetik memberikan kontribusi sebesar 3,83% terhadap Produk Domestik Bruto (PDB) pada triwulan III tahun 2023. Skincare menjadi salah satu kategori yang paling banyak dicari oleh masyarakat. Peningkatan minat terhadap produk kecantikan dipengaruhi oleh beberapa faktor, antara lain kemudahan akses informasi, tren kecantikan dan budaya populer, perubahan gaya hidup, dukungan influencer, inovasi produk kecantikan, kesadaran kesehatan kulit, dan diversifikasi produk.</h5></div>", unsafe_allow_html=True)
+st.write("<div style=''><h9>Berdasarkan data Kementerian Perindustrian, industri kosmetik memberikan kontribusi sebesar 3,83% terhadap Produk Domestik Bruto (PDB) pada triwulan III tahun 2023. Skincare menjadi salah satu kategori yang paling banyak dicari oleh masyarakat. Peningkatan minat terhadap produk kecantikan dipengaruhi oleh beberapa faktor, antara lain kemudahan akses informasi, tren kecantikan dan budaya populer, perubahan gaya hidup, dukungan influencer, inovasi produk kecantikan, kesadaran kesehatan kulit, dan diversifikasi produk.</h9></div>", unsafe_allow_html=True)
 
 df = pd.read_excel('top_3_ecommerce_edited2.1.xlsx')
 
