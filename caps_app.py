@@ -100,11 +100,97 @@ st.markdown("""
 
 ##
 
+df.loc[df['shop_loc'].str.contains('makassar', case=False), 'shop_loc'] = 'makassar'
+df.loc[df['shop_loc'].str.contains('surakarta', case=False), 'shop_loc'] = 'surakarta'   
+df.loc[df['shop_loc'].str.contains('kediri', case=False), 'shop_loc'] = 'kediri' 
+df.loc[df['shop_loc'].str.contains('pontianak', case=False), 'shop_loc'] = 'pontianak' 
+df.loc[df['shop_loc'].str.contains('yogyakarta', case=False), 'shop_loc'] = 'yogyakarta' 
+df.loc[df['shop_loc'].str.contains('balikpapan', case=False), 'shop_loc'] = 'kota balikpapan' 
+# df.loc[df['shop_loc'].str.contains('madiun', case=False), 'shop_loc'] = 'madiun' 
+# df.loc[df['shop_loc'].str.contains('dilayani toko', case=False), 'shop_loc'] = 'kediri' 
+# Mengganti kata 'Bandung' menjadi 'Kota Bandung' dalam kolom 'lokasi'
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bbandung\b|\bkota kota bandung\b', 'kota bandung', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bkab. kota bandung\b', 'kab. bandung', regex=True)
+df.loc[df['shop_loc'].str.contains(r'\bkota kota bandung\b', case=False), 'shop_loc'] = 'kota bandung'
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bbandar lampung\b|\bkota bandar lampung\b', 'kota bandar lampung', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bjakarta pusat\b|\bkota jakarta pusat\b', 'jakarta pusat', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bjakarta timur\b|\bkota jakarta timur\b', 'jakarta timur', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bjakarta barat\b|\bkota jakarta barat\b', 'jakarta barat', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bjakarta utara\b|\bkota jakarta utara\b', 'jakarta utara', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bjakarta selatan\b|\bkota jakarta selatan\b', 'jakarta selatan', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bbogor\b|\bkota bogor\b', 'kota bogor', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bsurabaya\b|\bkota surabaya\b', 'kota surabaya', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\btangerang selatan\b|\bkota tangerang selatan\b', 'kota tangerang selatan', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\btangerang\b|\bkota tangerang\b', 'kota tangerang', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bkab.ciamis\b|\bkab. ciamis\b', 'kab. ciamis', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bmedan\b|\bkota medan\b', 'kota medan', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bsemarang\b|\bkota semarang\b', 'kota semarang', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bdepok\b|\bkota depok\b', 'kota depok', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bbekasi\b|\bkota bekasi\b', 'kota bekasi', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bpalembang\b|\bkota palembang\b', 'kota palembang', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bcimahi\b|\bkota cimahi\b', 'kota cimahi', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bcirebon\b|\bkota cirebon\b', 'kota cirebon', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bmadiun\b|\bkota madiun\b', 'kota madiun', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bmalang\b|\bkota malang\b', 'kota malang', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\btasikmalaya\b|\bkota tasikmalaya\b', 'kota tasikmalaya', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bkota jakarta\b', 'jakarta', regex=True)
+df['shop_loc'] = df['shop_loc'].str.replace(r'\bkab. kota\b', 'kab. ', regex=True)
+
+
+col1, col2 = st.columns([2, 1]) 
+
+with col1:
+    if not df.empty:
+
+        all_locations = df['shop_loc'].unique()
+        selected_locations = st.multiselect('Select Shop Locations:', all_locations)
+
+        
+        if selected_locations:  # Cek apakah ada lokasi yang dipilih
+            # Filter DataFrame berdasarkan lokasi yang dipilih
+            filtered_df = df[df['shop_loc'].isin(selected_locations)]
+
+            if not filtered_df.empty:
+                fig = go.Figure()
+
+                # Membuat diagram batang berdasarkan penjualan produk untuk lokasi toko yang dipilih
+                st.write(f'Product Sales for {selected_locations}')
+                fig.add_trace(go.Bar(
+                    x=filtered_df['shop_loc'],
+                    y=filtered_df['prd_sales_1'],
+                    marker_color='#8AEC78'
+                ))
+
+                fig.update_layout(
+                    xaxis=dict(title='Shop Location'),
+                    yaxis=dict(title='Product Sales'),
+                    width=600,
+                    height=500
+                )
+
+                st.plotly_chart(fig)
+            else:
+                st.write("No data available for the selected shop locations.")
+        else:
+            st.write("Please select at least one shop location.")
+    else:
+        st.write("No data available to plot.")
+with col2:
+    st.markdown("""
+    <div style='margin-top:200px; text-align: justify;'>
+        <h11>Diagram batang disamping mereprsentasikan jumlah sales untuk setiap lokasi yang memungkinkan untuk membandingkan sales antar lokasi.</h11>
+    </div>
+""", unsafe_allow_html=True)
+
+
+
+################
+
 if not df.empty:
     fig = go.Figure()
 
     # Scatter plot based on product sales (single plot)
-    st.write('Location of Product Sales along Latitude and Longitude Coordinates')
+    st.write('Product Sales Location by Region')
     fig.add_trace(go.Scattergeo(
         lon=df['longitude'],
         lat=df['latitude'],
