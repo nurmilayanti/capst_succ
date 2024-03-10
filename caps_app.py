@@ -280,7 +280,7 @@ with col1:
     ).properties(
         width=plot_width,
         height=plot_height,
-        title='Top Products per E-commerce'
+        title='Top Brands per E-commerce'
     ).interactive()
     st.altair_chart(chart, use_container_width=False)
 
@@ -310,8 +310,10 @@ st.write('Insight :')
 st.markdown("""
     <div style='text-align: justify;'>
         <h11>1) Strategi pemasaran, terutama dalam memberikan diskon, memiliki dampak yang signifikan terhadap penjualan produk</h11><br>
-        <h11>2) Jawa secara keseluruhan menunjukkan tingkat penjualan produk yang lebih tinggi dibandingkan dengan daerah-daerah lain di Indonesia. Hal ini menunjukkan bahwa Jawa memiliki potensi pasar yang besar, daya beli yang signifikan, infrastruktur dan aksesibilitas, pusat kegiatan ekonomi dan bisnis dan pengaruh budaya populer.</h11><br>
-        <h11>1) Adanya variasi produk terlaris disetiap e-commerce menunjukkan bahwa setiap konsumen memiliki preferensi yang berbeda di setiap platform. Hal ini dapat dipengaruhi oleh berbagai faktor seperti pengalaman pengguna, promosi, harga, dan fitur khusus yang ditawarkan oleh masing-masing platform. </h11><br>
+        <h11>2) Jawa secara keseluruhan menunjukkan tingkat penjualan produk yang lebih tinggi dibandingkan dengan daerah-daerah lain di Indonesia. Hal ini menunjukkan bahwa Jawa memiliki potensi pasar yang besar, daya beli yang signifikan, infrastruktur dan aksesibilitas, pengaruh budaya populer serta sebagai pusat kegiatan ekonomi dan bisnis.</h11><br>
+        <h11>3) Adanya variasi produk terlaris disetiap e-commerce menunjukkan bahwa setiap konsumen memiliki preferensi yang berbeda di setiap platform. Hal ini dapat dipengaruhi oleh berbagai faktor seperti pengalaman pengguna, promosi, harga, dan fitur khusus yang ditawarkan oleh masing-masing platform.</h11><br>
+        <h11>4) Peringkat pertama yang ditempati oleh produk Korea Selatan menunjukkan tingginya popularitas produk yang berasal dari neggara tersebut di pasar e-commerce. Hal ini mungkin disebabkan oleh kualitas, inovasi, dan tren terkini dalam industri yang ditawarkan oleh produk-produk Korea Selatan. selain itu Minat yang tinggi terhadap budaya Korea dan produk-produknya mungkin menjadi alasan utama mengapa produk dari Korea Selatan menduduki peringkat pertama. sehingga mengembangkan produk-produk dengan konsep yang serupa untuk menarik minat konsumen yang terpengaruh oleh Korean Wave adalah salah satu ide yang dapat dipertimbangkan</h11><br>
+        <h11>1) Kehadiran 3 local brand di antara top 5 brand menunjukkan bahwa brands lokal telah berhasil meningkatkan kualitas dan reputasi mereka. Hal ini mencerminkan kemajuan dalam industri lokal dan kemampuan untuk bersaing dengan produk internasional.</h11>
     </div>
 """, unsafe_allow_html=True)
 st.write("<div style='text-align:center; margin-top:70px;'>Created by Nurmilayanti <a href>https://www.linkedin.com/in/nurmilayanti-ii/</a href></div>", unsafe_allow_html=True)
