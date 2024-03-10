@@ -242,6 +242,12 @@ if not df.empty:
 else:
     st.write("No data available to plot.")
 
+st.markdown("""
+    <div style='margin-bottom:40px; text-align: justify;'>
+        <h11>Map di atas menggambarkan lokasi penjualan produk berdasarkan koordinat longitude dan latitude, dengan intensitas warna yang mewakili volume penjualan. Hasil analisis menunjukkan bahwa penjualan produk tertinggi terkonsentrasi di wilayah Jawa.</h11>
+    </div>
+""", unsafe_allow_html=True)
+
 #####   
     
 top_brands = df.groupby('merk')['prd_sales_1'].sum()
