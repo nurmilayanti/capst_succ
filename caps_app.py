@@ -287,7 +287,7 @@ with col2:
             <h7></h7>
             {}
         </div>
-        """.format(top_brands_df.to_html()), 
+        """.format(top_brands_df.to_html(index=False)), 
         unsafe_allow_html=True
     )
 
