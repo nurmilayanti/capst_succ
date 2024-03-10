@@ -302,7 +302,7 @@ with col2:
 
 st.markdown("""
     <div style='text-align: justify; margin-bottom: 35px'>
-        <h11>Diagram batang menunjukkan perbedaan produk terlaris di setiap platform e-commerce. Terdapat variasi produk terpopuler antara Lazada, Shopee, dan Tokopedia. Hal ini menunjukkan bahwa preferensi konsumen yang berbeda-beda di setiap platform. pada tabel diseblah kanan menunjukkan top 5 brand dari keseluruhan e-commerce yang menunjukkan bahwa produk yang berasal dari Korea Selatan mampu mengungguli produk-produk lainnya hal ini dapat dipengaruhi oleh korean wave.</h11>
+        <h11>Diagram batang menunjukkan perbedaan produk terlaris antara platform e-commerce. Terdapat variasi produk terpopuler antara Lazada, Shopee, dan Tokopedia. Hal ini menunjukkan bahwa preferensi konsumen yang berbeda-beda di setiap platform. pada tabel diseblah kanan menunjukkan top 5 brand dari keseluruhan e-commerce yang menunjukkan bahwa produk yang berasal dari Korea Selatan mampu mengungguli produk-produk lainnya hal ini dapat dipengaruhi oleh korean wave.</h11>
     </div>
 """, unsafe_allow_html=True)
 
