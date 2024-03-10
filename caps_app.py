@@ -280,10 +280,11 @@ with col1:
 
 # Inside col2, display the table with adjusted right margin
 with col2:
+    st.write('Top Selling Brands')
     st.write(
         """
         <div style="margin-right: 5px; margin-bottom: 0px;">
-            <h7>Top Selling Brands</h7>
+            # <h7>Top Selling Brands</h7>
             {}
         </div>
         """.format(top_brands_df.to_html()), 
