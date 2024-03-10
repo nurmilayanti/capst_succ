@@ -282,7 +282,7 @@ with col1:
 with col2:
     st.write(
         """
-        <div style="margin-right: 5px;">
+        <div style="margin-right: 5px; margin bottom: 23px;">
             <h7>Top Selling Brands</h7>
             {}
         </div>
