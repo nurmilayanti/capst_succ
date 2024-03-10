@@ -138,8 +138,9 @@ df['shop_loc'] = df['shop_loc'].str.replace(r'\bkab. kota\b', 'kab. ', regex=Tru
 
 
 col1, col2 = st.columns([2, 1]) 
-st.write('Product Sales Distribution by Shop Locations')
+
 with col1:
+    st.write('Product Sales Distribution by Shop Locations')
     if not df.empty:
 
         all_locations = df['shop_loc'].unique()
